@@ -31,7 +31,7 @@ If a node or edge fails (becomes un-traversable), the algorithm filters out the 
 
 ### Instructions
 - Copy the code
-- Open your compiler(DevC++, VSCode, CodeBlocks, etc.)
+- Open your compiler(make sure it's not DevC++ or anything since this is a Phyton code)
 - Paste the code
 - Run the code
 - Pick option 2 for the graph in the assignment
