@@ -34,6 +34,7 @@ A key feature is that it can be easily done in parallel because each round can c
 
 ### Prerequisites
 -Python 3.x +
+
 -No external third-party dependencies required
 
 ### Instructions
@@ -43,7 +44,9 @@ A key feature is that it can be easily done in parallel because each round can c
 
 3.Execute the script: 
 
+```
 python boruvka.py
+```
 
 4. Choose the input mode when prompted; Enter 1 to manually input custom nodes and weighted edges.  Enter 2 to run the algorithm using the built-in default graph.  
 
