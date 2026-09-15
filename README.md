@@ -19,24 +19,31 @@ If a node or edge fails (becomes un-traversable), the algorithm filters out the 
 The graph consists of 7 vertices initialized as isolated sets: {A}, {B}, {C}, {D}, {E}, {F}, {G}. All 12 edges are sorted by weight, and the algorithm targets selecting 7 - 1 = 6 edges.
 
 ###Iteration 1: Edge (A, G), Weight 5
+
 The algorithm evaluates the lightest edge (A, G). Since A and G are in separate sets, adding this edge creates no cycle. The DSU performs a union, merging them into component {A, G}.
 
 ###Iteration 2: Edge (B, C), Weight 5
+
 The algorithm checks (B, C). Vertices B and C belong to disjoint sets, so the edge is accepted. The DSU merges them into component {B, C}.
 
 ###Iteration 3: Edge (D, E), Weight 5
+
 The algorithm checks (D, E). Nodes D and E are currently in separate components, so the edge is added. The DSU merges them into component {D, E}.
 
 ###Iteration 4: Edge (E, F), Weight 5
+
 The algorithm evaluates (E, F). Vertex E is in component {D, E} while F is isolated. Since their roots differ, the edge is accepted, expanding the component to {D, E, F}.
 
 ###Iteration 5: Edge (A, C), Weight 6
+
 The algorithm considers (A, C). Vertex A belongs to {A, G} and C belongs to {B, C}. Because these are two distinct components, the edge is accepted, merging them into {A, B, C, G}.
 
 ###Iteration 6: Edge (F, G), Weight 6
+
 The algorithm evaluates (F, G). Vertex F belongs to {D, E, F} and G belongs to {A, B, C, G}. Since they are in separate components, the edge is added, connecting all vertices into a single component {A, B, C, D, E, F, G}.
 
 ###Iteration 7: Remaining Edges & Termination
+
 With 6 edges selected, the MST is complete. Any further evaluation of the remaining edges (A, B), (B, D), (C, E), (B, E), (C, F), (A, F), reveals that both endpoints already share the same root, so they are rejected to prevent cycles. The process terminates with a total weight of 32.
 
 ---
