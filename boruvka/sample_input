@@ -1,13 +1,10 @@
-#Sample Inputs
+Sample Inputs
 
-#1.Recreating the Assignment Graph (7 Nodes, 12 Edges)
-
-#Enter nodes:
-
+Sample 1: Recreating the Assignment Graph (7 Nodes, 12 Edges)
+Nodes:
 A, B, C, D, E, F, G
 
-#Enter edges:
-
+Edges:
 A B 7
 A C 6
 A F 10
@@ -20,4 +17,16 @@ C F 9
 D E 5
 E F 5
 F G 6
+done
+
+Sample 2: Simple 4-Node Test Graph
+Nodes:
+A B C D
+
+Edges:
+A B 1
+B C 4
+C D 2
+A D 3
+A C 5
 done
