@@ -1,0 +1,23 @@
+#Sample Inputs
+
+#1.Recreating the Assignment Graph (7 Nodes, 12 Edges)
+
+#Enter nodes:
+
+A, B, C, D, E, F, G
+
+#Enter edges:
+
+A B 7
+A C 6
+A F 10
+A G 5
+B C 5
+B D 7
+B E 9
+C E 7
+C F 9
+D E 5
+E F 5
+F G 6
+done
