@@ -56,6 +56,7 @@ The algorithm evaluates (F, G). Vertex F belongs to {D, E, F} and G belongs to {
 **Iteration 7: Complete**
 With 6 edges selected, the MST is complete. Any further evaluation of the remaining edges (A, B), (B, D), (C, E), (B, E), (C, F), (A, F), reveals that both endpoints already share the same root, so they are rejected to prevent cycles. The process terminates with a total weight of 32.
 
+
 ---
 
 ## Prim
