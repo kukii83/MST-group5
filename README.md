@@ -1,2 +1,2 @@
-# Graph Theory 2nd Assignment Group 5
+# ITS Graph Theory class Group 5
 
