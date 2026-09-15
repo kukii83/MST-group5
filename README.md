@@ -40,9 +40,9 @@ A key feature is that it can be easily done in parallel because each round can c
 ### Instructions
 1. Clone or download this repository containing boruvka.py.
 
-2.Open your terminal or command prompt in the project directory.
+2. Open your terminal or command prompt in the project directory.
 
-3.Execute the script: 
+3. Execute the script: 
 
 ```
 python boruvka.py
