@@ -29,6 +29,13 @@ If a node or edge fails (becomes un-traversable), the algorithm filters out the 
 - Python 3.x interpreter installed
 - Standard Python built-in libraries
 
+### Instructions
+-Copy the code
+-Open your compiler(DevC++, VSCode, CodeBlocks, etc.)
+-Paste the code
+-Run the code
+-Pick option 2 for the graph in the assignment
+
 ### Results
 Here are the results from the graph in the assignment:
 
