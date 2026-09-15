@@ -24,7 +24,7 @@ ALL_NODES = ["A", "B", "C", "D", "E", "F", "G"]
 
 
 # ---------------------------------------------------------------------------
-# 2. Prim's Algorithm
+# 2. Prim's Algorithm Helper & Core Implementation
 # ---------------------------------------------------------------------------
 
 def build_adjacency_list(nodes, edges):
@@ -37,36 +37,9 @@ def build_adjacency_list(nodes, edges):
     return adj
 
 
-def get_current_components(visited, nodes, adj):
-    """Finds connected components for reporting (handles MSF if graph is disconnected)."""
-    # For Prim, we can do a quick connected-components scan using BFS/DFS on unvisited/visited partitions
-    visited_set = set(visited)
-    all_nodes_set = set(nodes)
-    
-    # Let's find connected components of the overall graph or just the visited subgraph
-    # To keep it consistent with the snapshot view:
-    parent = {n: n for n in nodes}
-    def find(i):
-        if parent[i] == i:
-            return i
-        parent[i] = find(parent[i])
-        return parent[i]
-    def union(i, j):
-        root_i = find(i)
-        root_j = find(j)
-        if root_i != root_j:
-            parent[root_i] = root_j
-
-    # Union based on valid edges in the graph or built MST edges
-    groups = defaultdict(list)
-    for n in nodes:
-        groups[find(n)].append(n)
-    return sorted([tuple(sorted(g)) for g in groups.values()])
-
-
 def prim_mst(nodes, edges, start_node=None, verbose=True):
     """
-    Runs Prim's algorithm using a min-heap.
+    Runs Prim's algorithm using a min-heap, correctly starting from start_node.
 
     Returns:
         mst_edges: list of (u, v, w) chosen for the MST/MSF
@@ -90,59 +63,44 @@ def prim_mst(nodes, edges, start_node=None, verbose=True):
         print(f"Prim's Algorithm on {len(nodes)} nodes, {len(edges)} edges (Start node: {start_node})")
         print("=" * 70)
 
-    # To handle potential disconnected graphs (MSF), we loop over all nodes
     unvisited_nodes = set(nodes)
+    pq = []
 
-    while unvisited_nodes:
-        # If the current component is exhausted but nodes remain, pick a new start node
-        if not visited:
-            current_start = unvisited_nodes.pop()
-            visited.add(current_start)
-            if verbose:
-                print(f"Starting new component at node: {current_start}")
-            
-            # Priority queue stores tuples of: (weight, u, v)
-            pq = []
-            for neighbor, weight in adj[current_start].items():
-                if neighbor in unvisited_nodes:
-                    heapq.heappush(pq, (weight, current_start, neighbor))
-            continue
+    def initialize_component(s):
+        visited.add(s)
+        unvisited_nodes.discard(s)
+        if verbose:
+            print(f"Starting component at node: {s}")
+        for neighbor, weight in adj[s].items():
+            if neighbor in unvisited_nodes:
+                heapq.heappush(pq, (weight, s, neighbor))
 
+    # Initialize starting cleanly from the requested start node
+    initialize_component(start_node)
+
+    while unvisited_nodes or pq:
         if not pq:
-            # If priority queue is empty and there are still unvisited nodes, graph is disconnected
             if unvisited_nodes:
-                current_start = unvisited_nodes.pop()
-                visited.add(current_start)
+                # Fallback in case of a disconnected graph (MSF creation)
+                next_node = unvisited_nodes.pop()
                 if verbose:
-                    print(f"Graph disconnected. Starting new component at node: {current_start}")
-                for neighbor, weight in adj[current_start].items():
-                    if neighbor in unvisited_nodes:
-                        heapq.heappush(pq, (weight, current_start, neighbor))
+                    print(f"Graph disconnected. Starting new component at node: {next_node}")
+                initialize_component(next_node)
                 continue
             else:
                 break
 
-        step_no += 1
         weight, u, v = heapq.heappop(pq)
 
-        # If v is already visited, this edge would form a cycle
+        # If v is already visited, skip it (avoids cycles)
         if v in visited:
-            status = f"REJECTED (Node {v} already visited - forms cycle)"
-            if verbose:
-                print(f"Step {step_no}: Edge evaluated ({u}, {v}) weight {weight}")
-                print(f"  Status             : {status}")
-                print("-" * 70)
-            trace.append({
-                "step": step_no,
-                "edge": (u, v, weight),
-                "status": status,
-            })
             continue
 
-        # Otherwise, add v to visited and include edge in MST
+        # Add v to visited and include edge in MST
         visited.add(v)
         unvisited_nodes.discard(v)
         mst_edges.append((u, v, weight))
+        step_no += 1
         status = "ADDED (Safe edge)"
 
         if verbose:
@@ -187,7 +145,7 @@ def run_scenario(name, nodes, edges, start_node=None, verbose=False):
 
 
 # ---------------------------------------------------------------------------
-# 3. Manual / interactive graph input (Same format as friend's script)
+# 3. Manual / interactive graph input (Matches friend's script format)
 # ---------------------------------------------------------------------------
 
 def get_nodes_from_user():
@@ -288,6 +246,7 @@ def choose_graph_source():
             "\nChoose graph source:\n"
             "  [1] Enter my own graph manually\n"
             "  [2] Use the built-in example graph\n"
+            "Enter 1 or 2: "
         ).strip()
 
         if choice == "1":
