@@ -60,6 +60,7 @@ Vizualised it would look like this:
 
 
 **Final MST edges**: (A-G)=5, (B-C)=5, (E-F)=5, (D-E)=5, (A-C)=6, (F-G)=6
+
 **Total MST weight**: 32
 
 ---
