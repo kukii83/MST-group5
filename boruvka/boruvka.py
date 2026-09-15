@@ -1,8 +1,6 @@
 from collections import defaultdict
 
-# ---------------------------------------------------------------------------
 # 1. Graph definition (from the given assignment)
-# ---------------------------------------------------------------------------
 
 ORIGINAL_EDGES = [
     ("A", "B", 7),
@@ -21,10 +19,7 @@ ORIGINAL_EDGES = [
 
 ALL_NODES = ["A", "B", "C", "D", "E", "F", "G"]
 
-
-# ---------------------------------------------------------------------------
 # 2. Union-Find (Disjoint Set Union) helper
-# ---------------------------------------------------------------------------
 
 class DSU:
     """Union-Find with path compression + union by rank."""
@@ -51,9 +46,7 @@ class DSU:
         return True
 
 
-# ---------------------------------------------------------------------------
 # 3. Boruvka's Algorithm
-# ---------------------------------------------------------------------------
 
 def boruvka_mst(nodes, edges, verbose=True):
     """
@@ -169,9 +162,8 @@ def run_scenario(name, nodes, edges, verbose=False):
     }
 
 
-# ---------------------------------------------------------------------------
+
 # 4. Manual / interactive graph input
-# ---------------------------------------------------------------------------
 
 def get_nodes_from_user():
     """Prompt the user for a list of node names (comma or space separated)."""
