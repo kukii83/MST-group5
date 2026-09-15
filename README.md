@@ -18,6 +18,46 @@ In this task, we are using three algorithms to use three algorithms, that is:
 ---
 
 ## Boruvka
+Boruvka's Algorithm is a well-known greedy approach for finding the Minimum Spanning Tree or Minimum Spanning Forest in a weighted, undirected graph.
+
+How It Works:
+
+1. Begin with each vertex in its own separate component.
+   
+2. In each round, look at all the connected groups and find the lightest edge that connects each group to another group outside of it.
+   
+3. Combine all selected edges at once into the minimum spanning tree and use a Disjoint Set Union (DSU / Union-Find) structure to join the components together.
+   
+4. Keep repeating the process until all the vertices are joined into one connected group (1 MST) or there are no more edges left to connect them (MSF). The time complexity is O(E log V), where E represents the total number of edges and V represents the total number of vertices.
+   
+A key feature is that it can be easily done in parallel because each round can choose edges for different parts at the same time without needing to wait for others.
+
+### Prerequisites
+-Python 3.x +
+-No external third-party dependencies required
+
+### Instructions
+1. Clone or download this repository containing boruvka.py.
+
+2.Open your terminal or command prompt in the project directory.
+
+3.Execute the script: 
+
+python boruvka.py
+
+4. Choose the input mode when prompted; Enter 1 to manually input custom nodes and weighted edges.  Enter 2 to run the algorithm using the built-in default graph.  
+
+### Results
+
+<img width="2028" height="588" alt="image" src="https://github.com/user-attachments/assets/92912af4-242d-47c8-babc-7c0094e0487e" />
+
+Vizualised it would look like this:
+
+<img width="367" height="313" alt="image" src="https://github.com/user-attachments/assets/1ff910de-35bb-4cb5-872a-dbde5c205d7a" />
+
+
+**Final MST edges**: (A-G)=5, (B-C)=5, (E-F)=5, (D-E)=5, (A-C)=6, (F-G)=6
+**Total MST weight**: 32
 
 ---
 
