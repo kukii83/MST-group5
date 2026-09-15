@@ -111,16 +111,50 @@ With 6 edges selected, the MST is complete. Any further evaluation of the remain
 ---
 
 ## Prim
+Prim’s Algorithm is a greedy algorithm used to find a Minimum Spanning Tree (MST) for a weighted, undirected graph.
+Unlike Kruskal's algorithm (which sorts all edges globally), Prim's grows a single tree outward step-by-step from a starting Node, always picking the lowest weight edge that connects a visited Node to an unvisited one until all nodes are connected.
 
+### How it works:
+ - **Start:** Choose any node as your starting point and mark it as visited.
+ - **Look around:** Check all the edges connected to your visited nodes that lead to unvisited nodes.
+ - **Pick the smallest:** Choose the edge with the lowest weight.
+ - **Repeat:** Add that new node to your visited group, include the edge in your tree, and repeat steps 2–3 until every node has been visited.
 
+### Prerequisites
+-Python 3.x +
 
+-No external third-party dependencies required
 
+### Instructions
+1. Clone or download this repository containing prims.py.
+   
+2. Open your terminal or command prompt in the project directory.
 
+3. Execute the script: 
 
+```
+python prims.py
+```
 
+4. Choose the input mode when prompted; Enter 1 to manually input custom nodes and weighted edges.  Enter 2 to run the algorithm using the built-in default graph.  
+
+### Results
+<img width="1537" height="861" alt="image" src="https://github.com/user-attachments/assets/16496cd5-f187-498e-8eba-b37f11d829f0" />
+
+Vizualised it would look like this:
+
+<img width="724" height="589" alt="image" src="https://github.com/user-attachments/assets/302ebf3e-4d27-40a7-9e69-23ffd2de44bf" />
+
+**Final MST edges**: (A-G)=5, (A-C)=6, (C-B)=5, (G-F)=6, (F-E)=5, (E-D)=5
+
+**Total MST weight**: 32
+
+---
 
 AI tools usage disclosure:
 
 https://claude.ai/share/bc5bca97-f9e8-4683-a52f-9ef00529fdfe
 
 https://claude.ai/share/d46f5fb3-1aa6-4a6f-b784-8654c2a9e618
+
+https://share.gemini.google/LZn3BaogJ0mE
