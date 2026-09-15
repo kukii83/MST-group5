@@ -13,7 +13,7 @@ In this task, we are using three algorithms to use three algorithms, that is:
 
 ## Kruskal
 Kruskal's algorithm is a greedy algorithm used to find the Minimum Spanning Tree (MST) of a connected, undirected, weighted graph. It operates by sorting all graph edges in non-decreasing order of their weights and iteratively adding the lightest edge to the MST, provided it does not form a cycle.To efficiently detect and prevent cycles, the algorithm utilizes a Disjoint Set Union (DSU) / Union-Find data structure optimized with path compression and union by rank.
-If a node or edge fails (becomes un-traversable), the algorithm filters out the missing components prior to sorting and running DSU. If a failure splits the graph into disconnected subgraphs, the algorithm gracefully adapts by returning a Minimum Spanning Forest (MSF).
+If a node or edge fails (becomes un-traversable), the algorithm filters out the missing components prior to sorting and running DSU. If a failure splits the graph into disconnected subgraphs, the algorithm gracefully adapts by returning a Minimum Spanning Forest (MSF). Here are the results from the graph in the assignment
 
 ### Initial State
 The graph consists of 7 vertices initialized as isolated sets: {A}, {B}, {C}, {D}, {E}, {F}, {G}. All 12 edges are sorted by weight, and the algorithm targets selecting 7 - 1 = 6 edges.
@@ -42,3 +42,13 @@ With 6 edges selected, the MST is complete. Any further evaluation of the remain
 ---
 
 ## Prim
+
+
+
+
+
+
+
+
+AI tools usage disclosure:
+https://claude.ai/share/bc5bca97-f9e8-4683-a52f-9ef00529fdfe
